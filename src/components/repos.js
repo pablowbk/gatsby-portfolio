@@ -27,31 +27,20 @@ const Repos = () => {
     }
   `)
 
-  console.log(repos.githubData.data.user.repositories.edges);
-
+  const results = repos.githubData.data.user.repositories.edges;
+  console.log(results.filter(({node}) => node.isFork))
   return (
-      <table>
-      <thead>
-        <tr>
-          <th>repo.id</th>
-          <th>repo.name</th>
-          <th>repo.isPrivate</th>
-          <th>repo.url</th>
-          <th>repo.description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {repos.githubData.data.user.repositories.edges.map(({ node }) => (
-          <tr key={node.id}>
-            <td>{node.id}</td>
-            <td>{node.name}</td>
-            <td>{node.isPrivate ? 'Privado' : 'Público'}</td>
-            <td>{node.url}</td>
-            <td>{node.description}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+      <ul className="repos__container">
+        {
+          results.map(({node}) => (
+            <li key={node.id}>
+              <h4>{node.name}</h4>
+              <p>{node.description || `No description available`}</p>
+              <p><a href={node.url}>Github</a></p>
+            </li>
+          ))
+        }
+      </ul>
   )
 }
 
