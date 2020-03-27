@@ -28,11 +28,11 @@ const Repos = () => {
   `)
 
   const results = repos.githubData.data.user.repositories.edges;
-  console.log(results.filter(({node}) => node.isFork))
+  console.log(results.filter(({node}) => node.isFork === false))
   return (
       <ul className="repos__container">
         {
-          results.map(({node}) => (
+          results.filter(({node}) => !node.isFork).map(({node}) => (
             <li key={node.id}>
               <h4>{node.name}</h4>
               <p>{node.description || `No description available`}</p>
