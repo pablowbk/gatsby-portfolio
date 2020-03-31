@@ -36,7 +36,7 @@ const Repos = () => {
             <li key={node.id}>
               <h4>{node.name}</h4>
               <p>{node.description || `No description available`}</p>
-              <p><a href={node.url}>Github</a></p>
+              <p><a href={node.url}>link to repo</a></p>
             </li>
           ))
         }

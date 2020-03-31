@@ -8,8 +8,8 @@ import Repos from "../components/repos"
 const SecondPage = () => (
   <Layout>
     <SEO title="Page two" />
-    <h1>GraphQL queries page</h1>
-    <p>Let's get some magic going.</p>
+    <h1>Github Repositories</h1>
+    <p>Collection of active repos on my Gihtub account</p>
 
     <Repos />
 
